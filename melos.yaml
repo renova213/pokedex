@@ -1,0 +1,26 @@
+name: flutter_base_project
+packages:
+  - features/**
+  - packages/**
+
+scripts:
+  # Get dependencies for all modules
+  get:
+    exec: flutter pub get
+    description: Run 'pub get' in all packages.
+
+  # Clean all modules
+  clean:
+    exec: flutter clean
+    description: Clean all packages.
+
+  # Analyze the whole project for errors
+  analyze:
+    exec: flutter analyze .
+    description: Analyze all packages to ensure 'Refactoring Safety'.
+
+  # Run build_runner
+  build:
+    exec: flutter pub run build_runner build --delete-conflicting-outputs
+    packageFilters:
+      dependsOn: build_runner

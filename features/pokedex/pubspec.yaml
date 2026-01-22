@@ -1,0 +1,28 @@
+name: pokedex
+description: "A new Flutter project."
+publish_to: "none"
+version: 1.0.0
+
+environment:
+  sdk: ^3.10.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  dependencies:
+    path: ../../packages/dependencies
+
+  core:
+    path: ../../packages/core
+
+  config:
+    path: ../../packages/config
+
+  shared_components:
+    path: ../../packages/shared_components
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0

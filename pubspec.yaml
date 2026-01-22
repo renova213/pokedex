@@ -1,0 +1,35 @@
+name: pokedex_app
+description: ""
+publish_to: "none"
+version: 1.0.0
+
+environment:
+  sdk: ^3.10.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  dependencies:
+    path: ./packages/dependencies
+
+  config:
+    path: ./packages/config
+
+  core:
+    path: ./packages/core
+
+  pokedex:
+    path: ./features/pokedex
+
+  shared_components:
+    path: ./packages/shared_components
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  melos: ^6.0.0
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
