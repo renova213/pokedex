@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:core/core.dart';
 import 'package:dependencies/dependencies.dart';
 import 'package:pokedex/pokedex.dart';
@@ -20,15 +22,17 @@ class PokedexRemoteDatasourceImpl implements PokedexRemoteDatasource {
         queryParameters: request.toJson(),
       );
 
+      localDataSource.setPokemons(response.data);
+
       return PokemonResponse.fromJson(response.data);
     } on DioException catch (e) {
-      // var pokedexLocalDataSource = await localDataSource.getPokemons();
+      var pokedexLocalDataSource = await localDataSource.getPokemons();
 
-      // if (pokedexLocalDataSource != null && pokedexLocalDataSource.isNotEmpty) {
-      //   var localJson = json.decode(pokedexLocalDataSource);
+      if (pokedexLocalDataSource != null && pokedexLocalDataSource.isNotEmpty) {
+        var localJson = jsonDecode(pokedexLocalDataSource);
 
-      //   return PokemonResponse.fromJson(localJson);
-      // }
+        return PokemonResponse.fromJson(localJson);
+      }
 
       throw NetworkException(message: e.message ?? 'Unknown network error');
     }

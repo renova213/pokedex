@@ -1,6 +1,7 @@
+import 'dart:convert';
+
 import 'package:dependencies/dependencies.dart';
 import 'package:pokedex/src/data/datasources/pokedex_local_data_source.dart';
-import 'package:pokedex/src/data/models/response/response.dart';
 
 class PokedexLocalDataSourceImpl implements PokedexLocalDataSource {
   @override
@@ -11,8 +12,8 @@ class PokedexLocalDataSourceImpl implements PokedexLocalDataSource {
   }
 
   @override
-  void setPokemons(PokemonResponse pokemonResponse) async {
+  void setPokemons(Map<String, dynamic> pokemonResponse) async {
     final sharedPreference = await SharedPreferences.getInstance();
-    sharedPreference.setString("pokemons", pokemonResponse.toJson().toString());
+    sharedPreference.setString("pokemons", jsonEncode(pokemonResponse));
   }
 }
